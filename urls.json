@@ -1,0 +1,21 @@
+{
+    "description" : "OpenFin health check URL metadata",
+    "urls" : [
+        {
+            "href" : "https://dl-dev.openfin.co/health",
+            "description" : "OpenFin Licensing Server"
+        },
+        {
+            "href" : "https://install-dev.openfin.co/api/ping",
+            "description" : "OpenFin Installer Generator"
+        },
+        {
+            "href" : "https://app-directory.openfin.co",
+            "description" : "OpenFin Application Directory"
+        },
+        {
+            "href" : "https://ingest-dev.openfin.co",
+            "description" : "OpenFin Diagnostics"
+        }
+    ]
+}
