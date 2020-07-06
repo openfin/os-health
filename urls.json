@@ -6,7 +6,7 @@
             "description" : "OpenFin Licensing Server"
         },
         {
-            "href" : "https://install-dev.openfin.co/api/ping",
+            "href" : "https://install-staging.openfin.co/api/ping",
             "description" : "OpenFin Installer Generator"
         },
         {
