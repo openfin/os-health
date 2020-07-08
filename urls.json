@@ -6,11 +6,11 @@
             "description" : "OpenFin Licensing Server"
         },
         {
-            "href" : "https://install-staging.openfin.co/api/ping",
+            "href" : "https://install-staging.openfin.co/api/version",
             "description" : "OpenFin Installer Generator"
         },
         {
-            "href" : "https://start.openfin.co/api/ping",
+            "href" : "https://start.openfin.co/api/version",
             "description" : "OpenFin Applcation Runner"
         },
         {
