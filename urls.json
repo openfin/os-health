@@ -10,7 +10,7 @@
             "description" : "OpenFin Installer Generator"
         },
         {
-            "href" : "https://start-dev.openfin.co/api/ping",
+            "href" : "https://start.openfin.co/api/ping",
             "description" : "OpenFin Applcation Runner"
         },
         {
