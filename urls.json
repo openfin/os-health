@@ -2,7 +2,7 @@
     "description" : "OpenFin health check URL metadata",
     "urls" : [
         {
-            "href" : "https://dl-dev.openfin.co/health",
+            "href" : "https://dl-staging.openfin.co/version",
             "description" : "OpenFin Licensing Server"
         },
         {
@@ -14,11 +14,11 @@
             "description" : "OpenFin Applcation Runner"
         },
         {
-            "href" : "https://app-directory.openfin.co",
+            "href" : "https://app-directory.openfin.co/version",
             "description" : "OpenFin Application Directory"
         },
         {
-            "href" : "https://ingest-dev.openfin.co",
+            "href" : "https://ingest-dev.openfin.co/desktop-analytics/version",
             "description" : "OpenFin Diagnostics"
         }
     ]
