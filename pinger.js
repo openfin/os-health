@@ -26,7 +26,15 @@ class OpenFinPinger {
             const ct = resp.headers.get("content-type");
             if (ct && ct.indexOf("application/json") !== -1) {
                 const j = await resp.json();
-                v = (j.private) ? `${j.private.version} (${j.private.sha})` : (j.projectVersion) ? j.projectVersion : j.version
+                if (j.private) {
+                    v = `${j.private.version} (${j.private.sha})`;
+                } else if (j.projectVersion) {
+                    v = j.projectVersion;
+                } else if (j.revision) {
+                    v = `${j.version} (${j.revision})`
+                } else {
+                    v = j.version;
+                }
             } else {
                 v = await resp.text();
             }
