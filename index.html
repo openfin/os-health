@@ -82,22 +82,24 @@
         function goodUrl(urlInfo) {
             const li = document.createElement('li');
             li.classList.add('good');
-            li.setAttribute('title', `${urlInfo.rootURL} : v${urlInfo.version}`);
             const led = document.createElement('led');
+            led.setAttribute('title', `v${urlInfo.version}`);
             li.appendChild(led);
             const msg = document.createElement('span');
+            msg.setAttribute('title', urlInfo.rootURL);
             msg.innerHTML = urlInfo.description;
             li.appendChild(msg);
             resultsDiv.appendChild(li);
         }
 
-        function badUrl(urlInfo, msg) {
+        function badUrl(urlInfo, err) {
             const li = document.createElement('li');
             li.classList.add('bad');
-            li.setAttribute('title', `${urlInfo.rootURL} : ${msg}`);
             const led = document.createElement('led');
+            led.setAttribute('title', err);
             li.appendChild(led);
             const m = document.createElement('span');
+            m.setAttribute('title', urlInfo.rootURL);
             m.innerHTML = urlInfo.description;
             li.appendChild(m);
             resultsDiv.appendChild(li);
