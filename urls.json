@@ -14,6 +14,10 @@
             "description" : "OpenFin Applcation Runner"
         },
         {
+            "href" : "https://auth-staging.openfin.co/api/version",
+            "description" : "OpenFin ID Service"
+        },
+        {
             "href" : "https://app-directory.openfin.co/version",
             "description" : "OpenFin Application Directory"
         },
