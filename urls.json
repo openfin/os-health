@@ -2,11 +2,11 @@
     "description" : "OpenFin health check URL metadata",
     "urls" : [
         {
-            "href" : "https://dl-staging.openfin.co/version",
+            "href" : "https://dl.openfin.co/version",
             "description" : "OpenFin Licensing Server"
         },
         {
-            "href" : "https://install-staging.openfin.co/api/version",
+            "href" : "https://install.openfin.co/api/version",
             "description" : "OpenFin Installer Generator"
         },
         {
@@ -14,7 +14,7 @@
             "description" : "OpenFin Applcation Runner"
         },
         {
-            "href" : "https://auth-staging.openfin.co/api/version",
+            "href" : "https://auth.os.openfin.co/api/version",
             "description" : "OpenFin ID Service"
         },
         {
@@ -22,7 +22,7 @@
             "description" : "OpenFin Application Directory"
         },
         {
-            "href" : "https://ingest-staging.openfin.co/desktop-analytics/version",
+            "href" : "https://ingest.openfin.co/desktop-analytics/version",
             "description" : "OpenFin Diagnostics"
         }
     ]
