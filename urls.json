@@ -11,7 +11,7 @@
         },
         {
             "href" : "https://start.openfin.co/api/version",
-            "description" : "OpenFin Applcation Runner"
+            "description" : "OpenFin Application Runner"
         },
         {
             "href" : "https://auth.os.openfin.co/api/version",
