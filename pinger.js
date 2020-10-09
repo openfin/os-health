@@ -1,24 +1,9 @@
-class OpenFinPinger {
-    constructor(urls, goodHandler, badHandler) {
-        this.urlInfo = urls;
-        this.goodHandler = goodHandler;
-        this.badHandler = badHandler;
-        this.urlParser = document.createElement('a');
-    }
-
-    async run() {
-        for (let i=0; i<this.urlInfo.urls.length; i++) {
-            const url = this.urlInfo.urls[i];
-            await this.ping(url);
-        }
-    }
-
-    async ping(url) {
-        const urlInfo = Object.assign({}, url, { rootURL: this.getRootURL(url.href)});
+const OpenFinPinger = {
+    ping: async (urlInfo, goodHandler, badHandler) => {
         try {
             const resp = await fetch(urlInfo.href);
             if (!resp.ok) {
-                this.badHandler(urlInfo, `${resp.statusText} - ${resp.statusText$}`);
+                badHandler(urlInfo, `${resp.statusText} - ${resp.statusText$}`);
                 return;
             }
 
@@ -38,30 +23,47 @@ class OpenFinPinger {
             } else {
                 v = await resp.text();
             }
-            this.goodHandler(Object.assign(urlInfo, { version: v }));
+            goodHandler(Object.assign(urlInfo, { version: v }));
         } catch(e) {
-            this.badHandler(urlInfo, e);
+            badHandler(urlInfo, e);
         }
-    }
+    },
+    pingManifest: async (name, manifest, handler) => {
+        const results = [];
+        // first test manifest url
+        let appURL = '';
+        try {
+            const purl = new URL(manifest);
+            const resp = await fetch(purl.href);
+            if (!resp.ok) {
+                results[0] = { status: 'error', msg: `error loading manifest, response: ${resp.status}`, url: purl.href};
+                handler(results);
+                return;
+            }
+            const j = await resp.json();    
+            if (j.startup_app && j.startup_app.url) {
+                appURL = j.startup_app.url;
+                results[0] = { status: 'ok', msg: `App manifest ${name}`, url: purl.href};
+            // } else if (j.platform) {
+            } else {
+                results[0] = { status: 'error', msg: `error loading manifest contents, could not find start url`, url: purl.href};
+                handler(results);
+                return;
+            }
+        } catch(e) {
+            results[0] = { status: 'error', msg: `error loading manifest, response: ${e}`, url: manifest};
+            handler(results);
+            return;
+        }
 
-    getRootURL(url) {
-        const purl = this.parseURL(url);
-        return `${purl.protocol}//${purl.host}`;
-    }
-
-    parseURL(url) {
-        console.log(url)
-        this.urlParser.href = url;
-        console.log(this.urlParser.hostname)
-        
-        return {
-            protocol: this.urlParser.protocol,
-            host: this.urlParser.host,
-            hostname: this.urlParser.hostname,
-            port: this.urlParser.port,
-            pathname: this.urlParser.pathname,
-            search: this.urlParser.search,
-            hash: this.urlParser.hash
-        };
+        // now test start url
+        try {
+            const surl = new URL(appURL);
+            const resp = await fetch(surl.href, {mode: 'no-cors'});
+            results[1] = { status: 'ok', msg: `App startup url`, url: surl.href };
+        } catch(e) {
+            results[1] = { status: 'error', msg: `startup url error: ${e}`, url: appURL };
+        }
+        handler(results);
     }
 }
