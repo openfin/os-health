@@ -10,19 +10,23 @@
     
             --color-bg: #fff;
             --color-text: #000;
-            --color-btn: #0d53e9;
+            --color-btn: #504cff;
             --color-btn-text: #fff;
 
             --color-good: green;
             --color-bad: red;
 
             --logo-url: url("//cdn.openfin.co/ofbadge.png");
+            --box-bg: #eee;
+            --box-border: #ccc;
         }
         @media (prefers-color-scheme: dark) {
             :root {
                 --color-bg: #333;
                 --color-text: #f7f7f7;
                 --color-good: lightgreen;
+                --box-bg: #444;
+                --box-border: #666;
             }
         }
         body {
@@ -43,8 +47,8 @@
             display: block;
             padding: 40px 90px 10px 90px;
             border-radius: 10px;
-            border: 1px solid #666; 
-            background-color: #444;
+            border: 1px solid var(--box-border);
+            background-color: var(--box-bg);
         }
         footer {
             display: block;
@@ -55,7 +59,7 @@
             border: none;
             border-radius: 5px;
             padding: 15px 30px;
-            color: var(--color-txt);
+            color: var(--color-btn-text);
             background-color: var(--color-btn);
         }
         ul {
