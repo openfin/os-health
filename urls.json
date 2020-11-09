@@ -24,6 +24,10 @@
         {
             "href" : "https://ingest.openfin.co/desktop-analytics/version",
             "description" : "OpenFin Diagnostics"
+        },
+        {
+            "href" : "https://cdn.openfin.co/health.html",
+            "description" : "OpenFin CDN"
         }
     ]
 }
